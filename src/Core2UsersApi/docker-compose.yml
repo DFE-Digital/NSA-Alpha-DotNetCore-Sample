@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  core2usersapi:
+    image: core2usersapi
+    build:
+      context: ./Core2UsersApi
+      dockerfile: Dockerfile
