@@ -30,6 +30,16 @@ Target.Create "Set Solution Name" (fun _ ->
 
 )
 
+Target.Create "Check DotNetCli is installed" (fun _ ->
+
+    let isInstalled = DotNetCli.isInstalled().ToString()
+
+    trace (isInstalled)
+
+    if isInstalled = "False" then
+        DotNetCli.InstallDotNetSDK("2.0.0") |> ignore
+)
+
 Target.Create "Build DNX Project"(fun _ ->
     
     DotNetCli.Build
@@ -56,7 +66,8 @@ Target.Create "Package DNX" (fun _ ->
     
 )
 
-"Set Solution Name"
+"Check DotNetCli is installed"
+ ==> "Set Solution Name"
  ==> "Build DNX Project"
  ==> "Package DNX"
 
