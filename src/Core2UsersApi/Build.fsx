@@ -8,7 +8,7 @@ open Fake.Core.Trace
 let rootPublishDirectory = getBuildParamOrDefault "publishDirectory"  @"C:\CompiledSource"
 let buildMode = getBuildParamOrDefault "buildMode" "Debug"
 
-let corePath = "C:\Windows\system32\config\systemprofile\AppData\Local\dotnetcore\dotnet.exe"
+let mutable corePath = "dotnet"
 
 let mutable projectName = ""
 let mutable publishDirectory = rootPublishDirectory @@ projectName
@@ -39,7 +39,9 @@ Target.Create "Check DotNetCli is installed" (fun _ ->
     trace (isInstalled)
 
     if isInstalled = "False" then
-        DotNetCli.InstallDotNetSDK("2.0.0") |> ignore
+        corePath <- DotNetCli.InstallDotNetSDK("2.0.0") 
+
+    trace corePath
 )
 
 Target.Create "Restore DNX"(fun _ -> 
