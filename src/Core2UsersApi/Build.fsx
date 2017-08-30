@@ -40,6 +40,15 @@ Target.Create "Check DotNetCli is installed" (fun _ ->
         DotNetCli.InstallDotNetSDK("2.0.0") |> ignore
 )
 
+Target.Create "Restore DNX"(fun _ -> 
+
+    DotNetCli.Restore(fun p ->
+        { p with 
+            Project = projectName;
+        })
+    
+)
+
 Target.Create "Build DNX Project"(fun _ ->
     
     DotNetCli.Build
@@ -68,6 +77,7 @@ Target.Create "Package DNX" (fun _ ->
 
 "Check DotNetCli is installed"
  ==> "Set Solution Name"
+ ==> "Restore DNX"
  ==> "Build DNX Project"
  ==> "Package DNX"
 
