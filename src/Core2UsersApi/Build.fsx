@@ -8,6 +8,8 @@ open Fake.Core.Trace
 let rootPublishDirectory = getBuildParamOrDefault "publishDirectory"  @"C:\CompiledSource"
 let buildMode = getBuildParamOrDefault "buildMode" "Debug"
 
+let corePath = "C:\Windows\system32\config\systemprofile\AppData\Local\dotnetcore\dotnet.exe"
+
 let mutable projectName = ""
 let mutable publishDirectory = rootPublishDirectory @@ projectName
 let mutable solutionFilePresent = true
@@ -45,6 +47,7 @@ Target.Create "Restore DNX"(fun _ ->
     DotNetCli.Restore(fun p ->
         { p with 
             Project = projectName;
+            ToolPath = corePath;
         })
     
 )
@@ -55,7 +58,8 @@ Target.Create "Build DNX Project"(fun _ ->
         (fun p -> 
             { p with 
                 Configuration = buildMode;
-                Project = projectName
+                Project = projectName;
+                ToolPath = corePath;
             })
     
     |> ignore
@@ -68,7 +72,8 @@ Target.Create "Package DNX" (fun _ ->
             { p with 
                 Configuration = buildMode;
                 Project = projectName;
-                Output = publishDirectory
+                Output = publishDirectory;
+                ToolPath = corePath;
             })
     
     |> ignore
