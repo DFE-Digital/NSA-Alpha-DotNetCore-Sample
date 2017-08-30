@@ -1,0 +1,3 @@
+NUGET
+  remote: https://www.nuget.org/api/v2
+    FAKE.Core (5.0.0-alpha015)

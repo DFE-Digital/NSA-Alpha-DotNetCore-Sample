@@ -1,0 +1,4 @@
+// [ FAKE GROUP ]
+source https://nuget.org/api/v2
+
+nuget FAKE.Core prerelease

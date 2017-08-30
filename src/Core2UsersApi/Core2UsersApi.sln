@@ -1,11 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.8
+VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core2UsersApi", "Core2UsersApi\Core2UsersApi.csproj", "{F01D7DFB-C9BD-4B98-9248-ACE0C1F2874A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core2UsersApi", "Core2UsersApi\Core2UsersApi.csproj", "{F01D7DFB-C9BD-4B98-9248-ACE0C1F2874A}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{8D25D43A-DB00-40F0-A66D-43648D9F3E02}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{B4951DB5-B597-43E4-BC2F-A0577A704B3F}"
+	ProjectSection(SolutionItems) = preProject
+		Build.cmd = Build.cmd
+		Build.fsx = Build.fsx
+		paket.dependencies = paket.dependencies
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
