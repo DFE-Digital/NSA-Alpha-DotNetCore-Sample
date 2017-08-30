@@ -41,3 +41,5 @@ Write-Host "Downloading and installation of the SDK is complete."
 $LocalDotnet = "$InstallDir/dotnet"
 
 # Run the build process now. Implement your build script here.
+
+dotnet --version
