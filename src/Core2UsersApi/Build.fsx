@@ -41,7 +41,7 @@ Target.Create "Check DotNetCli is installed" (fun _ ->
     if isInstalled = "False" then
         corePath <- DotNetCli.InstallDotNetSDK("2.0.0") 
 
-    trace corePath
+    trace ("Core path set to: " + corePath)
 )
 
 Target.Create "Restore DNX"(fun _ -> 
